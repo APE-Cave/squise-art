@@ -32,5 +32,13 @@ async function create(req, res, next) {
 async function destroy(req, res, next) {
   let art = req.params;
   let arts = await ArtModel.destroy({where: art});
-  res.status
+  res.status(200).json(arts);
 }
+
+async function update(req, res, next) {
+  let { id } = req.params;
+  let art = await ArtModel.update({where: {id}});
+  res.status(200).json(art)
+}
+
+module.exports = router;
